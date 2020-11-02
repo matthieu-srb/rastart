@@ -62,6 +62,12 @@ class User
      */
     private $email;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Groupe::class)
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $idGroupe;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -171,6 +177,18 @@ class User
     public function setEmail(string $email): self
     {
         $this->email = $email;
+
+        return $this;
+    }
+
+    public function getIdGroupe(): ?Groupe
+    {
+        return $this->idGroupe;
+    }
+
+    public function setIdGroupe(?Groupe $idGroupe): self
+    {
+        $this->idGroupe = $idGroupe;
 
         return $this;
     }
