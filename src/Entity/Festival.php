@@ -37,6 +37,12 @@ class Festival
      */
     private $dateFestival;
 
+    /**
+     * @ORM\OneToOne(targetEntity=Lieu::class, cascade={"persist", "remove"})
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $idLieu;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -86,6 +92,18 @@ class Festival
     public function setDateFestival(\DateTimeInterface $dateFestival): self
     {
         $this->dateFestival = $dateFestival;
+
+        return $this;
+    }
+
+    public function getIdLieu(): ?Lieu
+    {
+        return $this->idLieu;
+    }
+
+    public function setIdLieu(Lieu $idLieu): self
+    {
+        $this->idLieu = $idLieu;
 
         return $this;
     }

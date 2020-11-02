@@ -27,6 +27,12 @@ class Annonce
      */
     private $news;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Artiste::class)
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $idArtiste;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -52,6 +58,18 @@ class Annonce
     public function setNews(?string $news): self
     {
         $this->news = $news;
+
+        return $this;
+    }
+
+    public function getIdArtiste(): ?Artiste
+    {
+        return $this->idArtiste;
+    }
+
+    public function setIdArtiste(?Artiste $idArtiste): self
+    {
+        $this->idArtiste = $idArtiste;
 
         return $this;
     }

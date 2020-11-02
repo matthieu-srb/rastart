@@ -47,6 +47,12 @@ class Artiste
      */
     private $biographie;
 
+    /**
+     * @ORM\OneToOne(targetEntity=User::class, cascade={"persist", "remove"})
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $idUser;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -120,6 +126,18 @@ class Artiste
     public function setBiographie(?string $biographie): self
     {
         $this->biographie = $biographie;
+
+        return $this;
+    }
+
+    public function getIdUser(): ?User
+    {
+        return $this->idUser;
+    }
+
+    public function setIdUser(User $idUser): self
+    {
+        $this->idUser = $idUser;
 
         return $this;
     }
