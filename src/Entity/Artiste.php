@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\ArtisteRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -52,6 +54,16 @@ class Artiste
      * @ORM\JoinColumn(nullable=false)
      */
     private $idUser;
+
+    /**
+     * @ORM\ManyToMany(targetEntity=Event::class, inversedBy="idArtiste")
+     */
+    private $idEvent;
+
+    public function __construct()
+    {
+        $this->idEvent = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -138,6 +150,30 @@ class Artiste
     public function setIdUser(User $idUser): self
     {
         $this->idUser = $idUser;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Event[]
+     */
+    public function getIdEvent(): Collection
+    {
+        return $this->idEvent;
+    }
+
+    public function addIdEvent(Event $idEvent): self
+    {
+        if (!$this->idEvent->contains($idEvent)) {
+            $this->idEvent[] = $idEvent;
+        }
+
+        return $this;
+    }
+
+    public function removeIdEvent(Event $idEvent): self
+    {
+        $this->idEvent->removeElement($idEvent);
 
         return $this;
     }

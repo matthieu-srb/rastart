@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\FestivalRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -42,6 +44,16 @@ class Festival
      * @ORM\JoinColumn(nullable=false)
      */
     private $idLieu;
+
+    /**
+     * @ORM\ManyToMany(targetEntity=User::class)
+     */
+    private $idUser;
+
+    public function __construct()
+    {
+        $this->idUser = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -104,6 +116,30 @@ class Festival
     public function setIdLieu(Lieu $idLieu): self
     {
         $this->idLieu = $idLieu;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|User[]
+     */
+    public function getIdUser(): Collection
+    {
+        return $this->idUser;
+    }
+
+    public function addIdUser(User $idUser): self
+    {
+        if (!$this->idUser->contains($idUser)) {
+            $this->idUser[] = $idUser;
+        }
+
+        return $this;
+    }
+
+    public function removeIdUser(User $idUser): self
+    {
+        $this->idUser->removeElement($idUser);
 
         return $this;
     }
