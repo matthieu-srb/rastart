@@ -5,17 +5,21 @@
 
 body {
     font-family: "Bitstream Vera Serif Bold", serif;
-    background-image: url("https://cdn.pixabay.com/photo/2016/04/04/14/12/monitor-1307227_960_720.jpg");
-    width: 100%;
-    top: 0;
-    left: 0;
+    background-image: url("Images/fond6.jpg");
+    background-position: center;
+    background-size: cover;
+    background-attachment: fixed;
+    background-repeat:no-repeat ;
+    margin-bottom: 1%;
 }
 footer {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background-color: #4dd0e1;
+    position:static;
+    margin-bottom: 0px;
+    bottom: 0px;
+    height: 20%;
+    left: 0px;
+    right: 0px;
+    background-color: lightgrey;
 }
 
 /** Zone wrapper de la page d'accueil **/

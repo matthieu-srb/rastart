@@ -60,6 +60,11 @@ class Artiste
      */
     private $idEvent;
 
+    /**
+     * @ORM\Column(type="text", nullable=true)
+     */
+    private $social;
+
     public function __construct()
     {
         $this->idEvent = new ArrayCollection();
@@ -174,6 +179,18 @@ class Artiste
     public function removeIdEvent(Event $idEvent): self
     {
         $this->idEvent->removeElement($idEvent);
+
+        return $this;
+    }
+
+    public function getSocial(): ?string
+    {
+        return $this->social;
+    }
+
+    public function setSocial(?string $social): self
+    {
+        $this->social = $social;
 
         return $this;
     }
