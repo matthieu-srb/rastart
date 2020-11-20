@@ -30,18 +30,18 @@ class Event
     private $date;
 
     /**
-     * @ORM\ManyToMany(targetEntity=Artiste::class, mappedBy="idEvent")
-     */
-    private $idArtiste;
-
-    /**
      * @ORM\Column(type="integer")
      */
     private $idRegion;
 
+    /**
+     * @ORM\ManyToMany(targetEntity=User::class, mappedBy="idEvent")
+     */
+    private $idUser;
+
     public function __construct()
     {
-        $this->idArtiste = new ArrayCollection();
+        $this->idUser = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -73,33 +73,6 @@ class Event
         return $this;
     }
 
-    /**
-     * @return Collection|Artiste[]
-     */
-    public function getIdArtiste(): Collection
-    {
-        return $this->idArtiste;
-    }
-
-    public function addIdArtiste(Artiste $idArtiste): self
-    {
-        if (!$this->idArtiste->contains($idArtiste)) {
-            $this->idArtiste[] = $idArtiste;
-            $idArtiste->addIdEvent($this);
-        }
-
-        return $this;
-    }
-
-    public function removeIdArtiste(Artiste $idArtiste): self
-    {
-        if ($this->idArtiste->removeElement($idArtiste)) {
-            $idArtiste->removeIdEvent($this);
-        }
-
-        return $this;
-    }
-
     public function getIdRegion(): ?int
     {
         return $this->idRegion;
@@ -108,6 +81,33 @@ class Event
     public function setIdRegion(int $idRegion): self
     {
         $this->idRegion = $idRegion;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|User[]
+     */
+    public function getIdUser(): Collection
+    {
+        return $this->idUser;
+    }
+
+    public function addIdUser(User $idUser): self
+    {
+        if (!$this->idUser->contains($idUser)) {
+            $this->idUser[] = $idUser;
+            $idUser->addIdEvent($this);
+        }
+
+        return $this;
+    }
+
+    public function removeIdUser(User $idUser): self
+    {
+        if ($this->idUser->removeElement($idUser)) {
+            $idUser->removeIdEvent($this);
+        }
 
         return $this;
     }

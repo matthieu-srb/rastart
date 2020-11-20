@@ -50,9 +50,15 @@ class Festival
      */
     private $idUser;
 
+    /**
+     * @ORM\ManyToMany(targetEntity=User::class, mappedBy="id_festival")
+     */
+    private $id_user;
+
     public function __construct()
     {
         $this->idUser = new ArrayCollection();
+        $this->id_user = new ArrayCollection();
     }
 
     public function getId(): ?int

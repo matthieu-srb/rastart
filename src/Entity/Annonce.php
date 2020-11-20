@@ -28,10 +28,10 @@ class Annonce
     private $news;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Artiste::class)
+     * @ORM\ManyToOne(targetEntity=user::class)
      * @ORM\JoinColumn(nullable=false)
      */
-    private $idArtiste;
+    private $idUser;
 
     public function getId(): ?int
     {
@@ -62,15 +62,16 @@ class Annonce
         return $this;
     }
 
-    public function getIdArtiste(): ?Artiste
+    public function getIdUser(): ?user
     {
-        return $this->idArtiste;
+        return $this->idUser;
     }
 
-    public function setIdArtiste(?Artiste $idArtiste): self
+    public function setIdUser(?user $idUser): self
     {
-        $this->idArtiste = $idArtiste;
+        $this->idUser = $idUser;
 
         return $this;
     }
+
 }

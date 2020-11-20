@@ -3,33 +3,37 @@
     src: url("/public/fonts/Century-Gothic.ttf");
 }
 
-body {
-    font-family: "Bitstream Vera Serif Bold", serif;
-    background-image: url("Images/fond6.jpg");
-    background-position: center;
-    background-size: cover;
-    background-attachment: fixed;
-    background-repeat:no-repeat ;
-    margin-bottom: 1%;
-}
-footer {
-    position:static;
-    margin-bottom: 0px;
-    bottom: 0px;
-    height: 20%;
-    left: 0px;
-    right: 0px;
-    background-color: lightgrey;
+html {
+    height: 100%;
 }
 
-/** Zone wrapper de la page d'accueil **/
-.home-wrapper {
-    margin: 1em auto;
-    max-width: 800px;
-    width: 95%;
-    font: 18px/1.5 Century-Gothic;
+body {
+    position: relative;
+    font-family: "Bitstream Vera Serif Bold", serif;
+    background-image: url("Images/fond6.jpg");
+    background-position: center center;
+    background-attachment: fixed;
+    -webkit-background-size: cover; /* pour anciens Chrome et Safari */
+    background-size: cover; /* version standardisée */
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    min-height: 100%;
+    margin: 0;
+    display: table;
+    padding-bottom: 15%;
 }
-.home-wrapper code {
-    background: #F5F5F5;
-    padding: 2px 6px;
+
+footer {
+    background-color: lightgrey;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: table-row;
+    height: 150px;
 }
+
+.carousel-inner img {
+    margin: auto;
+}
+* {-moz-box-sizing: border-box; box-sizing: border-box;}

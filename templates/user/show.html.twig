@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello UserController!{% endblock %}
+
+{% block body %}
+    <h1 class="text-center">Profil utilisateur</h1>
+
+    <table class="table">
+        <tbody>
+        {#<img src="{{ asset('asset/profileImages/') }}{{ participant.imageUrl }}" width="135" height="135">
+        #}
+        <tr>
+            <th>Email</th>
+            <td>{{ user.email }}</td>
+        </tr>
+        <tr>
+            <th>Nom</th>
+            <td>{{ user.nom }}</td>
+        </tr>
+        <tr>
+            <th>Prenom</th>
+            <td>{{ user.prenom }}</td>
+        </tr>
+        <tr>
+            <th>Telephone</th>
+            <td>{{ user.telephone }}</td>
+        </tr>
+
+
+        </tbody>
+    </table>
+    {% if is_granted('ROLE_ADMIN') %}
+        <a class="btn btn-primary" href="{{ path('participant_index') }}">Retour</a>
+    {% else %}
+        <a class="btn btn-primary" href="{{ path('accueil') }}">Retour</a>
+    {% endif %}
+    {% if is_granted('ROLE_ADMIN') and app.user.username != participant.email %}
+        <a class="btn btn-primary" href="{{ path('participant_edit', {'id': participant.id}) }}">Modifier</a>
+    {% endif %}
+{% endblock %}

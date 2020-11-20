@@ -14,7 +14,8 @@
 
         <div id="navbarSupportedContent" class="collapse navbar-collapse">
             <ul class="navbar-nav ml-auto">
-                <li class="nav-item active"><a href="{{ path('home') }}" class="nav-link">Accueil <span class="sr-only">(current)</span></a>
+                <li class="nav-item active"><a href="{{ path('home') }}" class="nav-link">Accueil <span
+                                class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
@@ -24,7 +25,8 @@
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                         <a class="dropdown-item" href="{{ path('notreEngagement') }}">Notre engagement</a>
                         <a class="dropdown-item" href="{{ path('lesProjets') }}">Les projets</a>
-                        <a class="dropdown-item" href="{{ path('ressourcesdocumentions') }}">Ressoures & Documentations</a>
+                        <a class="dropdown-item" href="{{ path('ressourcesdocumentions') }}">Ressoures &
+                            Documentations</a>
                         <a class="dropdown-item" href="{{ path('lesBonusEtArchives') }}">Les Bonus & Archives</a>
                         <a class="dropdown-item" href="{{ path('agenda') }}">Agenda</a>
                         <a class="dropdown-item" href="{{ path('partenaires') }}">Partenaires</a>
@@ -32,7 +34,7 @@
                     </div>
                 </li>
                 <li class="nav-item"><a href="{{ path('leFestival') }}" class="nav-link">Le Festival</a></li>
-                <li class="nav-item"><a href="{{ path('artisteEtStructures') }}" class="nav-link">Artistes & Structures</a></li>
+                <li class="nav-item"><a href="#" class="nav-link">Artistes & Structures</a></li>
                 <li class="nav-item"><a href="{{ path('live') }}" class="nav-link">Live</a></li>
                 <li class="nav-item"><a href="{{ path('liveRadio') }}" class="nav-link">Rast'Art Radio</a></li>
                 <li class="nav-item"><a href="{{ path('shop') }}" class="nav-link">Shop</a></li>
@@ -49,7 +51,8 @@
             </ul>
         </div>
     </div>
-    <a href="#" class="btn btn-outline-dark" role="button" aria-pressed="true">Espace Artistes &nbsp<i class='fas fa-user'></i> </a>
+    <a href="{{ path('app_login') }}" class="btn btn-outline-dark" role="button" aria-pressed="true">Espace Artistes
+        &nbsp<i class='fas fa-user'></i> </a>
 </nav>
 
 
