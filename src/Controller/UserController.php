@@ -4,9 +4,11 @@ namespace App\Controller;
 
 use App\Entity\User;
 use App\Form\UserType;
+use Symfony\Bridge\Twig\Mime\TemplatedEmail;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Mailer\Mailer;
 use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
@@ -90,5 +92,23 @@ class UserController extends AbstractController
             'user' => $user,
             'form' => $form->createView(),
         ]);
+    }
+
+    /**
+     * Simple new User Email sending function
+     * @param Mailer $mailer
+     * @param User $user
+     */
+    private function sendNewUserEmail(Mailer $mailer, User $user)
+    {
+        $email = (new TemplatedEmail())
+            ->from('contact@rastart.fr')
+            ->to($user->getEmail())
+            ->subject('Votre compte sur Rastart.fr')
+            ->htmlTemplate('email/mailNouvelUtilisateur.html.twig')
+            ->context([
+                'token'=>$user->getToken()
+            ]);
+        $mailer->send($email);
     }
 }
